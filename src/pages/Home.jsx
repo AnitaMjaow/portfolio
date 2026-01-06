@@ -1,3 +1,4 @@
+import SolarSystem from "../components/SolarSystem";
 export default function Home() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-20">
@@ -20,6 +21,8 @@ export default function Home() {
             I love to deep dive into front end to create unique styles for webpages and believe that
             minimalistic does not mean it has to be dull.
           </p>
+
+          <SolarSystem />
 
 
           <div className="mt-6 flex gap-3">

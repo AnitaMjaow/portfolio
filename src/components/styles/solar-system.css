@@ -1,0 +1,272 @@
+.solar-wrap{
+  display:grid;
+  place-items:center;
+  padding: clamp(24px, 5vw, 70px) 16px;
+}
+
+.solar2{
+  width: min(760px, 92vw);
+  aspect-ratio: 1 / 1;
+  position: relative;
+  display:grid;
+  place-items:center;
+  isolation:isolate;
+}
+
+/* draw multiple orbit rings */
+.solar2::before{
+  content:"";
+  position:absolute;
+  inset: 4%;
+  border-radius: 50%;
+  pointer-events:none;
+  z-index: 0;
+
+  /* many concentric circles */
+  background:
+    radial-gradient(circle, transparent 9.5%, rgba(160,240,255,.18) 9.7%, transparent 10.1%),
+    radial-gradient(circle, transparent 17.5%, rgba(160,240,255,.14) 20.7%, transparent 18.1%),
+    radial-gradient(circle, transparent 25.5%, rgba(160,240,255,.12) 25.7%, transparent 26.1%),
+    radial-gradient(circle, transparent 33.5%, rgba(160,240,255,.10) 33.7%, transparent 34.1%),
+    radial-gradient(circle, transparent 41.5%, rgba(160,240,255,.09) 45.7%, transparent 42.1%),
+    radial-gradient(circle, transparent 49.5%, rgba(160,240,255,.08) 49.7%, transparent 50.1%),
+    radial-gradient(circle, transparent 57.5%, rgba(160,240,255,.07) 60.7%, transparent 58.1%),
+    radial-gradient(circle, transparent 65.5%, rgba(160,240,255,.06) 89.7%, transparent 66.1%);
+  opacity: 0.60;
+  filter: drop-shadow(0 0 8px rgba(140,220,255,0.08));
+}
+
+/* Sun */
+.sun{
+  width: clamp(48px, 7vw, 92px);
+  height: clamp(48px, 7vw, 92px);
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffbe17 10%, #ff7b17 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 20px #ff7b17, 0 0 40px rgba(255, 123, 23, 0.4);
+  z-index: 3;
+  position: relative;
+}
+
+
+/* animated neon glow OUTSIDE the sun */
+.sun::before{
+  content: "";
+  position: absolute;
+  inset: -55%;              /* controls how far glow extends */
+  border-radius: 50%;
+  pointer-events: none;
+
+  /* corona colors */
+  background:
+    radial-gradient(circle,
+      rgba(255, 200, 70, 0.45) 0%,
+      rgba(255, 123, 23, 0.22) 45%,
+      transparent 70%
+    );
+
+  filter: blur(24px);
+  mix-blend-mode: screen;
+  opacity: 0.75;
+
+  animation: sun-corona-move 6.5s ease-in-out infinite;
+}
+
+/* optional: adds subtle “energy flicker” texture */
+.sun::after{
+  content: "";
+  position: absolute;
+  inset: -30%;
+  border-radius: 50%;
+  pointer-events: none;
+
+  background:
+    conic-gradient(
+      from 0deg,
+      transparent,
+      rgba(255, 190, 23, 0.18),
+      transparent,
+      rgba(255, 123, 23, 0.14),
+      transparent
+    );
+
+  filter: blur(18px);
+  opacity: 0.55;
+  mix-blend-mode: screen;
+
+  animation: sun-corona-spin 3s linear infinite;
+}
+
+@keyframes sun-corona-move{
+  0%, 100%{
+    transform: scale(1) translate(0, 0);
+    opacity: 0.65;
+  }
+  50%{
+    transform: scale(1.10) translate(2%, -2%);
+    opacity: 0.95;
+  }
+}
+
+@keyframes sun-corona-spin{
+  from{ transform: rotate(0deg); }
+  to{ transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .sun::before,
+  .sun::after{
+    animation: none !important;
+  }
+}
+
+/* Planets */
+.p{
+
+  --planet-light: rgba(255,255,255,0.9);
+  --planet-mid: rgba(255,255,255,0.35);
+  --planet-dark: rgba(0,0,0,0.65);
+  --planet-glow: rgba(160,240,255,0.25);
+
+
+
+  --r: 200px;         /* orbit radius (JS will set) */
+  --dur: 18s;         /* orbit speed */
+  --phase: 0deg;      /* start angle */
+  --size: 44px;       /* planet size */
+  --glow: rgba(160,240,255,.25);
+
+  position:absolute;
+  left:50%;
+  top:50%;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  text-decoration:none;
+  outline:none;
+  z-index: 2;
+
+  animation: orbit2 var(--dur) linear infinite;
+}
+
+.p__icon{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform: translate(-50%,-50%);
+
+  font-size: clamp(12px, 1.6vw, 18px);
+  color: rgba(255,255,255,0.9);
+
+  line-height: 1;
+  display:grid;
+  place-items:center;
+
+  /* subtle depth */
+  text-shadow:
+    0 1px 2px rgba(0,0,0,0.45),
+    0 0 8px rgba(255,255,255,0.15);
+
+  pointer-events:none; /* click goes to planet */
+}
+
+
+
+@keyframes orbit2{
+  from{
+    transform: translate(-50%,-50%) rotate(var(--phase)) translateX(var(--r));
+  }
+  to{
+    transform: translate(-50%,-50%) rotate(calc(var(--phase) + 360deg)) translateX(var(--r));
+  }
+}
+
+/* planet body */
+.p::before{
+ content:"";
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    var(--planet-light),
+    var(--planet-mid) 45%,
+    var(--planet-dark) 100%
+  );
+ box-shadow:
+    0 0 0 1px rgba(255,255,255,0.12),
+    0 0 18px var(--planet-glow),
+    0 16px 28px rgba(0,0,0,0.35);
+}
+
+
+
+/* icon centered */
+.p__icon{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform: translate(-50%,-50%);
+  opacity: 1;
+}
+
+/* Rings on some planets */
+.p__ring{
+  position:absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: none;
+  border: 1px solid color-mix(in srgb, var(--planet-mid), white 30%);
+  opacity: 0.3;
+  pointer-events:none;
+  box-shadow: 0 0 14px var(--planet-glow);
+}
+
+.ring--flat .p__ring{ transform: rotate(18deg) scaleY(0.65); }
+.ring--tilt-vertical .p__ring{ transform: rotate(90deg) scaleY(0.55); }
+
+
+/* planet sizes (responsive with clamp) */
+.p--ig{ --size: clamp(26px, 3.8vw, 44px); }
+.p--gh{ --size: clamp(18px, 2.6vw, 32px); }
+.p--cp{ --size: clamp(22px, 3.2vw, 38px); }
+.p--li{ --size: clamp(24px, 3.4vw, 40px); }
+
+/* Brand-ish planet colors */
+.p--ig{
+  --planet-light: #ffd6f3;
+  --planet-mid: #ff7bd8;
+  --planet-dark: #3a0c2e;
+  --planet-glow: rgba(255,120,220,0.25);
+}
+
+.p--gh{
+  --planet-light: #b4e0a6;
+  --planet-mid: #539653;
+  --planet-dark: #124717;
+  --planet-glow: rgba(200,200,255,0.25);
+}
+
+.p--cp{
+  --planet-light: #8c8d8d;
+  --planet-mid: #434444;
+  --planet-dark: #1c1d1d;
+  --planet-glow: rgba(0, 0, 0, 0.25);
+}
+
+.p--li{
+  --planet-light: #91c5f5;
+  --planet-mid: #6fb7ff;
+  --planet-dark: #082744;
+  --planet-glow: rgba(100,170,255,0.25);
+}
+
+
+/* hover glow */
+.p:hover{ filter: drop-shadow(0 0 40px rgba(190,120,255,0.8)); }
+.p:focus-visible{ filter: drop-shadow(0 0 22px rgba(120,220,255,0.6)); }
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .p{ animation: none !important; }
+}
