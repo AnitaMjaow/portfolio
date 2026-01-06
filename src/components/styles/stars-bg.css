@@ -1,0 +1,158 @@
+.stars-bg{
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.stars-layer, .meteors-layer{
+  position: absolute;
+  inset: 0;
+}
+
+/* Tiny glowing stars */
+.star{
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--size);
+  height: var(--size);
+  border-radius: 999px;
+
+  /* star is a tiny radial glow */
+  background: radial-gradient(circle,
+    rgba(255,255,255,0.95) 0%,
+    rgba(255,255,255,0.55) 35%,
+    rgba(255,255,255,0.0) 70%
+  );
+
+  opacity: var(--o);
+  filter:
+    blur(0.15px)
+    drop-shadow(0 0 calc(6px * var(--g)) rgba(160,240,255,0.55))
+    drop-shadow(0 0 calc(10px * var(--g)) rgba(255,120,220,0.22));
+
+  animation:
+    twinkle var(--tw) ease-in-out infinite;
+  animation-delay: var(--d);
+}
+
+/* Twinkle = opacity + slight scale */
+@keyframes twinkle{
+  0%, 100% { opacity: calc(var(--o) * 0.65); transform: scale(0.92); }
+  35%      { opacity: var(--o);             transform: scale(1.00); }
+  55%      { opacity: calc(var(--o) * 0.45); transform: scale(0.86); }
+  75%      { opacity: calc(var(--o) * 0.95); transform: scale(1.06); }
+}
+
+/* Meteors (shooting stars) in different directions */
+.meteor{
+  position: absolute;
+  top: var(--top);
+  left: var(--left);
+  width: 50px;
+  height: 2px;
+  border-radius: 50px;
+
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0),
+    rgba(255,255,255,0.95),
+    rgba(255,255,255,0)
+  );
+
+  filter: drop-shadow(0 0 10px rgba(2, 230, 123, 0.55));
+  opacity: 0;
+
+  transform: rotate(var(--ang));
+  animation: meteor var(--dur) linear infinite;
+  animation-delay: var(--delay);
+}
+
+@keyframes meteor{
+  0%   { opacity: 0; transform: translate3d(0,0,0) rotate(var(--ang)); }
+  8%   { opacity: 1; }
+  22%  { opacity: 0; transform: translate3d(140vw, 60vh, 0) rotate(var(--ang)); }
+  100% { opacity: 0; transform: translate3d(140vw, 60vh, 0) rotate(var(--ang)); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .star, .meteor{ animation: none !important; }
+}
+
+/* Big sparkle / flare stars */
+.star--flare{
+  width: calc(var(--size) * 3.2);
+  height: calc(var(--size) * 5.2);
+  opacity: 0.95;
+
+  background: radial-gradient(circle,
+    rgba(255,255,255,1) 0%,
+    rgba(255,255,255,0.85) 10%,
+    rgba(170,220,255,0.35) 28%,
+    rgba(255,255,255,0.0) 70%
+  );
+
+  filter:
+    drop-shadow(0 0 10px rgba(200,240,255,0.55))
+    drop-shadow(0 0 22px rgba(130,210,255,0.35));
+
+  animation: flareTwinkle var(--tw) ease-in-out infinite;
+}
+
+/* Cross rays */
+.star--flare::before,
+.star--flare::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width: 180%;
+  height: 2px;
+  transform: translate(-50%,-50%);
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255,255,255,0.95),
+    transparent
+  );
+  opacity: 0.85;
+  filter: blur(0.2px) drop-shadow(0 0 8px rgba(255,255,255,0.4));
+}
+
+.star--flare::after{
+  transform: translate(-50%,-50%) rotate(90deg);
+  height: 2px;
+}
+
+/* Optional diagonal rays (more like the image) */
+.star--flare span{
+  position:absolute;
+  inset:0;
+}
+.star--flare span::before,
+.star--flare span::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width: 170%;
+  height: 1.5px;
+  transform: translate(-50%,-50%) rotate(45deg);
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255,255,255,0.7),
+    transparent
+  );
+  opacity: 0.55;
+  filter: blur(0.25px);
+}
+.star--flare span::after{
+  transform: translate(-50%,-50%) rotate(-45deg);
+}
+
+@keyframes flareTwinkle{
+  0%, 100% { transform: scale(0.96); opacity: 0.3; }
+  45%      { transform: scale(1.06); opacity: 1; }
+  70%      { transform: scale(0.98); opacity: 0.85; }
+}

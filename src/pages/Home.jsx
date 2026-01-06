@@ -28,13 +28,13 @@ export default function Home() {
           <div className="mt-6 flex gap-3">
             <a
               href="#work"
-              className="rounded-md bg-white px-4 py-2 text-sm font-semibold text-zinc-900"
+              className="rounded-md border border-zinc-800 bg-zinc-900/40 px-4 py-2 text-sm"
             >
               View work
             </a>
             <a
               href="#contact"
-              className="rounded-md border border-zinc-700 px-4 py-2 text-sm"
+              className="rounded-md border border-zinc-800 bg-zinc-900/40 px-4 py-2 text-sm"
             >
               Contact
             </a>
