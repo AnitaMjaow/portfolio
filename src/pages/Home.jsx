@@ -1,7 +1,7 @@
 import SolarSystem from "../components/SolarSystem";
 export default function Home() {
   return (
-    <section className="mx-auto max-w-6xl px-4 py-20">
+    <section className="px-4 py-20">
       <div className="grid gap-12 md:grid-cols-2 md:items-center">
         {/* LEFT */}
         <div>

@@ -1,8 +1,9 @@
 .solar-wrap{
-  display:grid;
-  place-items:center;
-  padding: clamp(24px, 5vw, 70px) 16px;
+  display: grid;
+  place-items: center;
+  padding: clamp(16px, 4vw, 48px) 0; /* no horizontal padding */
 }
+
 
 .solar2{
   width: min(760px, 92vw);
