@@ -70,7 +70,7 @@ export default function SolarSystem() {
 
         <a
         className="p p--ig"
-        href="https://instagram.com/YOUR"
+        href="https://www.instagram.com/anita__lalita/"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Instagram"
@@ -82,7 +82,7 @@ export default function SolarSystem() {
 
         <a
         className="p p--gh"
-        href="https://github.com/YOUR"
+        href="https://github.com/AnitaMjaow"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="GitHub"
@@ -95,7 +95,7 @@ export default function SolarSystem() {
 
         <a
         className="p p--cp"
-        href="https://codepen.io/YOUR"
+        href="https://codepen.io/catfeewebdev"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="CodePen"
@@ -105,7 +105,7 @@ export default function SolarSystem() {
         </span>
         </a>
 
-        <a
+        {/* <a
         className="p p--li"
         href="https://linkedin.com/in/YOUR"
         target="_blank"
@@ -115,7 +115,7 @@ export default function SolarSystem() {
         <span className="p__icon" aria-hidden="true">
             <FontAwesomeIcon icon={faLinkedinIn} />
         </span>
-        </a>
+        </a> */}
       </div>
     </section>
   );

@@ -14,6 +14,17 @@
   isolation:isolate;
 }
 
+/* Pause ALL orbits when hovering ANY planet */
+.solar2:has(.p:hover) .p {
+  animation-play-state: paused;
+}
+
+/* Also pause when keyboard focusing a planet */
+.solar2:has(.p:focus-visible) .p {
+  animation-play-state: paused;
+}
+
+
 /* draw multiple orbit rings */
 .solar2::before{
   content:"";

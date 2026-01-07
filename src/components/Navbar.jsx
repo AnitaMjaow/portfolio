@@ -43,24 +43,21 @@ export default function Navbar() {
             >
               Home
             </NavLink>
-            <a className={linkBase} href="#packages">
-              Packages
+            <a className={linkBase} href="#freelance">
+              Portfolio
             </a>
             <a className={linkBase} href="#about">
-              About
-            </a>
-            <a className={linkBase} href="#contact">
-              Contact
+              Freelance
             </a>
           </nav>
 
-          {/* Desktop CTA */}
+          {/* Desktop CTA
           <a
             href="#contact"
             className="hidden md:inline-flex rounded-md bg-white px-3 py-2 text-sm font-semibold text-zinc-900"
           >
             Let’s talk
-          </a>
+          </a> */}
 
           {/* Mobile hamburger */}
           <button
@@ -108,10 +105,10 @@ export default function Navbar() {
 
               <a
                 className={linkBase}
-                href="#packages"
+                href="#freelance"
                 onClick={() => setOpen(false)}
               >
-                Packages
+                Freelance
               </a>
               <a
                 className={linkBase}
