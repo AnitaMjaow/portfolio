@@ -32,11 +32,12 @@ export default function Home() {
               className={`${CARD_BASE} p-6 md:col-span-4 md:col-start-1 md:row-start-1`}
             >
               <p className="text-xs uppercase tracking-widest text-white/50">
-                Philosophy
+                About
               </p>
-              <h2 className="mt-3 text-lg font-semibold">Less, But Better</h2>
+              <h2 className="mt-3 text-lg font-semibold">Frontend Developer | UX Experimentalist</h2>
               <p className="mt-2 text-sm text-white/70">
-                Remove the noise to focus on functional beauty and user clarity.
+                I push the UX envelope while keeping the design clean and the code cleaner. 
+                My passion is crafting high-performance digital interfaces where less truly delivers more. I specialize in turning complex ideas into simple, functional beauty, ensuring every interaction feels intuitive and intentional.
               </p>
             </article>
 
@@ -63,20 +64,24 @@ export default function Home() {
               <ul className="mt-3 space-y-2 text-sm text-white/70">
                 <li>React + Vite</li>
                 <li>Tailwind CSS</li>
-                <li>Framer Motion</li>
                 <li>Netlify</li>
+                <li>Git</li>
+                <li>Python</li>
+                <li>SQL</li>
+                <li>WordPress Theme Development</li>
+                <li>WooCommerce</li>
               </ul>
             </article>
 
             {/* Portfolio */}
             <article
-              className={`${CARD_BASE} p-6 md:col-span-4 md:col-start-1 md:row-start-2 text-center`}
+              className={`${CARD_BASE} p-6 md:col-span-4 md:col-start-1 md:row-start-2`}
             >
-              <h2 className="text-2xl font-semibold tracking-tight">
+              <h2 className="text-lg font-semibold tracking-tight">
                 PORTFOLIO / FREELANCE
               </h2>
               <p className="mt-4 text-sm text-white/70">
-                This section contains selected client work.
+                This section contains selected work.
                 <br />
                 If you’re an employer or potential client, feel free to request
                 access.
@@ -90,7 +95,7 @@ export default function Home() {
             <article
               className={`${CARD_BASE} p-6 flex items-center justify-center text-center italic md:col-span-4 md:col-start-9 md:row-start-2`}
             >
-              “Make it clear, then make it ship.”
+              “Lets make the internet a little more interesting together”
             </article>
 
             {/* Wide Image */}
@@ -123,7 +128,7 @@ export default function Home() {
             pauseBetween={900}
             loop
             sound
-            className="neon-text text-3xl md:text-2xl tracking-wide text-zinc-200 drop-shadow-[0_0_12px_rgba(120,200,255,0.25)]"
+            className="neon-text text-[20px] md:text-2xl tracking-wide text-zinc-200 drop-shadow-[0_0_12px_rgba(120,200,255,0.25)]"
           />
 
           <div className="mt-12 md:mt-20">
