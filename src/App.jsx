@@ -2,6 +2,7 @@ import useMediaQuery from "./hooks/useMediaQuery";
 import { Routes, Route } from "react-router-dom";
 import StarsBg from "./components/StarsBg";
 import SpaceBg from "./components/SpaceBg";
+import HoverSounds from "./components/HoverSounds";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -12,6 +13,7 @@ export default function App() {
   const isMobile = useMediaQuery("(max-width: 640px)");
   return (
     <>
+      <HoverSounds volume={0.25} />
       <SpaceBg />
       <StarsBg
         count={isMobile ? 10 : 40}

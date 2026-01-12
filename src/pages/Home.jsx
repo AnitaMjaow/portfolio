@@ -123,7 +123,7 @@ export default function Home() {
             pauseBetween={900}
             loop
             sound
-            className="neon-text text-xs md:text-base tracking-wide text-zinc-200 drop-shadow-[0_0_12px_rgba(120,200,255,0.25)]"
+            className="neon-text text-3xl md:text-2xl tracking-wide text-zinc-200 drop-shadow-[0_0_12px_rgba(120,200,255,0.25)]"
           />
 
           <div className="mt-12 md:mt-20">
