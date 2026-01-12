@@ -121,8 +121,8 @@ export default function Home() {
         <section className="relative py-24 md:py-40 text-center">
 
           <Typewriter
-            text="Follow me on social media ^_^"
-            speed={70}
+            text="Yap with me on Instagram"
+            speed={80}
             startDelay={400}
             pauseAfter={1800}
             pauseBetween={900}
