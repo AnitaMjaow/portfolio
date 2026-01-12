@@ -28,7 +28,7 @@ export default function SolarSystem() {
         href: "https://www.instagram.com/anita__lalita/",
         label: "Instagram",
         title: "Instagram",
-        desc: "Follow my work and behind-the-scenes updates.",
+        desc: "Follow my digital diary on Instagram",
         icon: faInstagram,
       },
       {
@@ -37,7 +37,7 @@ export default function SolarSystem() {
         href: "https://github.com/AnitaMjaow",
         label: "GitHub",
         title: "GitHub",
-        desc: "Open-source projects and experiments.",
+        desc: "Check out my Open-source projects and experiments.",
         icon: faGithub,
       },
       {
@@ -253,11 +253,11 @@ export default function SolarSystem() {
               Go to {active.title} →
             </a>
 
-            {isTouchLike && (
+            {/* {isTouchLike && (
               <p className="planet-card__hint">
                 Tip: tap a planet to preview, or use “Go to …” above.
               </p>
-            )}
+            )} */}
           </div>
         )}
 
