@@ -105,19 +105,19 @@ export default function Navbar() {
 
               <a
                 className={linkBase}
+                href="#portfolio"
+                onClick={() => setOpen(false)}
+              >
+                Portfolio
+              </a>
+              <a
+                className={linkBase}
                 href="#freelance"
                 onClick={() => setOpen(false)}
               >
                 Freelance
               </a>
-              <a
-                className={linkBase}
-                href="#about"
-                onClick={() => setOpen(false)}
-              >
-                About
-              </a>
-              <a
+              {/* <a
                 className={linkBase}
                 href="#contact"
                 onClick={() => setOpen(false)}
@@ -131,7 +131,7 @@ export default function Navbar() {
                 className="mt-2 rounded-md bg-white px-3 py-2 text-center text-sm font-semibold text-zinc-900"
               >
                 Let’s talk
-              </a>
+              </a> */}
             </div>
           </div>
         )}

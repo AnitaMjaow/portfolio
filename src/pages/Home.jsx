@@ -123,8 +123,8 @@ export default function Home() {
           <Typewriter
             text="Follow me on social media ^_^"
             speed={70}
-            startDelay={600}
-            // pauseAfter={1800}
+            startDelay={400}
+            pauseAfter={1800}
             pauseBetween={900}
             loop
             sound
