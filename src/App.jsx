@@ -18,8 +18,8 @@ export default function App() {
         meteors={isMobile ? 2 : 6}
       />
 
-      <div className="min-h-screen text-zinc-100">
-      <div className="w-full md:mx-auto md:max-w-6xl md:border-x md:border-white/10">
+      <div className="min-h-screen flex flex-col text-zinc-100">
+      <div className="flex flex-col flex-1 w-full md:mx-auto md:border-x md:border-white/10">
         <Navbar />
         <main className="flex-1">
           <Routes>

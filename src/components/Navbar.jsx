@@ -43,10 +43,10 @@ export default function Navbar() {
             >
               Home
             </NavLink>
-            <a className={linkBase} href="#freelance">
+            <a className={linkBase} href="#portfolio">
               Portfolio
             </a>
-            <a className={linkBase} href="#about">
+            <a className={linkBase} href="#freelance">
               Freelance
             </a>
           </nav>

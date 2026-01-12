@@ -1,106 +1,138 @@
 import SolarSystem from "../components/SolarSystem";
 import Typewriter from "../components/Typewriter";
 
+const CARD_BASE =
+  "rounded-3xl border border-white/10 bg-white/5 backdrop-blur text-white";
+
 export default function Home() {
   return (
-    <section className="px-4 py-20">
-      <div className="grid gap-12 md:grid-cols-2 md:items-center">
-        {/* LEFT */}
-        <div>
-          <h1 className="mt-4 text-4xl font-bold md:text-4xl">
-            Clean Lines + Bold Styles
-          </h1>
+    <main className="min-h-screen px-4">
+      <div className="mx-auto max-w-6xl">
 
-          <p className="mt-4 text-zinc-300">
-            I’m Anita, and I build high-end web experiences for the fun of it. I
-            love both sallads and burgers the same for clean lines and bold
-            styles.
-          </p>
+        {/* ================= HERO SECTION ================= */}
+        <section className="pt-20 pb-24 md:pt-40 md:pb-48">
 
-          <SolarSystem />
+          {/* Header */}
+          <header className="text-center text-white">
+            <h1 className="text-4xl md:text-6xl font-semibold tracking-tight">
+              Clean Lines <span className="opacity-70">+ Bold Styles</span>
+            </h1>
 
-          {/* <div className="mt-6 flex gap-3">
-            <a
-              href="#work"
-              className="rounded-md border border-zinc-800 bg-zinc-900/40 px-4 py-2 text-sm"
+            <p className="mx-auto mt-6 max-w-2xl text-sm md:text-base text-white/70">
+              Independent Designer & Developer. Crafting high-performance digital
+              experiences for forward-thinking brands.
+            </p>
+          </header>
+
+          {/* Bento Grid */}
+          <section className="mt-16 md:mt-24 grid grid-cols-1 gap-4 md:grid-cols-12 md:gap-6">
+
+            {/* Philosophy */}
+            <article
+              className={`${CARD_BASE} p-6 md:col-span-4 md:col-start-1 md:row-start-1`}
             >
-              View work
-            </a>
-            <a
-              href="#contact"
-              className="rounded-md border border-zinc-800 bg-zinc-900/40 px-4 py-2 text-sm"
+              <p className="text-xs uppercase tracking-widest text-white/50">
+                Philosophy
+              </p>
+              <h2 className="mt-3 text-lg font-semibold">Less, But Better</h2>
+              <p className="mt-2 text-sm text-white/70">
+                Remove the noise to focus on functional beauty and user clarity.
+              </p>
+            </article>
+
+            {/* Hero Image */}
+            <article
+              className={`${CARD_BASE} overflow-hidden md:col-span-4 md:col-start-5 md:row-span-2`}
             >
-              Contact
-            </a>
-          </div> */}
-        </div>
+              <div className="aspect-[4/5] md:h-full md:aspect-auto">
+                <img
+                  src="/catfee_riding.png"
+                  alt="Featured project"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            </article>
 
-        {/* RIGHT */}
+            {/* Stack */}
+            <article
+              className={`${CARD_BASE} p-6 md:col-span-4 md:col-start-9`}
+            >
+              <p className="text-xs uppercase tracking-widest text-white/50">
+                Stack
+              </p>
+              <ul className="mt-3 space-y-2 text-sm text-white/70">
+                <li>React + Vite</li>
+                <li>Tailwind CSS</li>
+                <li>Framer Motion</li>
+                <li>Netlify</li>
+              </ul>
+            </article>
 
-        <p>
+            {/* Portfolio */}
+            <article
+              className={`${CARD_BASE} p-6 md:col-span-4 md:col-start-1 md:row-start-2 text-center`}
+            >
+              <h2 className="text-2xl font-semibold tracking-tight">
+                PORTFOLIO / FREELANCE
+              </h2>
+              <p className="mt-4 text-sm text-white/70">
+                This section contains selected client work.
+                <br />
+                If you’re an employer or potential client, feel free to request
+                access.
+              </p>
+              <p className="pt-4 text-sm text-white/80">
+                catfeewebdev@gmail.com
+              </p>
+            </article>
+
+            {/* Quote */}
+            <article
+              className={`${CARD_BASE} p-6 flex items-center justify-center text-center italic md:col-span-4 md:col-start-9 md:row-start-2`}
+            >
+              “Make it clear, then make it ship.”
+            </article>
+
+            {/* Wide Image */}
+            <article
+              className={`${CARD_BASE} overflow-hidden md:col-span-12 md:row-start-3`}
+            >
+              <div className="aspect-[16/10] md:aspect-[21/9]">
+                <img
+                  src="/control-room.png"
+                  alt="Control room"
+                  className="h-full w-full object-cover object-[center_35%] md:object-center"
+                />
+              </div>
+            </article>
+
+          </section>
+        </section>
+
+        {/* ================= SCROLL PAUSE ================= */}
+        <section className="py-24 md:py-40" />
+
+        {/* ================= SOCIAL / SOLAR SECTION ================= */}
+        <section className="relative py-24 md:py-40 text-center">
+
           <Typewriter
-            text={`Follow me on social media`}
+            text="Follow me on social media"
             speed={70}
             startDelay={400}
             pauseAfter={1800}
             pauseBetween={900}
             loop
-            sound 
+            sound
             className="neon-text text-xs md:text-base tracking-wide text-zinc-200 drop-shadow-[0_0_12px_rgba(120,200,255,0.25)]"
           />
-        </p>
 
-        {/* SPANNING PILL (desktop) */}
-        <div className="md:col-span-2">
-          <div
-            className="
-      w-full
-      md:w-auto
-      max-w-full
-      md:max-w-none
-      rounded-2xl
-      md:rounded-full
-      border border-white/10
-      bg-zinc-900/40
-      px-4 py-2
-      text-m
-      text-center 
-      text-zinc-300 
-      backdrop-blur
-      wrap-break-words
-      whitespace-normal
-    "
-          >
-            WordPress Theme Development + React + Vite + Tailwind + Python + UX
-            + Data Analytics
+          <div className="mt-12 md:mt-20">
+            <SolarSystem />
           </div>
-        </div>
 
-
-
-
-        <h1 className="mt-4 text-4xl font-bold md:text-4xl">
-            Portfolio
-        </h1>
-
-          <p className="mt-4 text-zinc-300">
-            Send me a request and I'll give you access to display my work.
-             Somehow the Aliens has shut down this page and I need to ask their leader
-             for the password.
-          </p>
-
-        <h1 className="mt-4 text-4xl font-bold md:text-4xl">
-            Freelance
-        </h1>
-
-          <p className="mt-4 text-zinc-300">
-            The aliens has been active and has also shut down my freelance page.
-            So you will need a password for that too!
-          </p>
-
-
+        </section>
 
       </div>
-    </section>
+    </main>
   );
 }

@@ -30,6 +30,7 @@
   pointer-events: none;
 }
 
+/* STAR LAYER 1 */
 .space-bg::before{
   width: 2px;
   height: 2px;
@@ -38,10 +39,13 @@
     5vw 10vh #fff, 12vw 30vh #fff, 18vw 70vh #fff, 25vw 20vh #fff, 33vw 55vh #fff,
     40vw 15vh #fff, 48vw 80vh #fff, 54vw 35vh #fff, 62vw 60vh #fff, 70vw 25vh #fff,
     78vw 75vh #fff, 85vw 40vh #fff, 92vw 65vh #fff, 15vw 85vh #fff, 45vw 50vh #fff,
-    60vw 10vh #fff, 75vw 5vh #fff, 90vw 15vh #fff;
+    60vw 10vh #fff, 75vw 5vh #fff, 90vw 15vh #fff,
+    8vw 55vh #fff, 22vw 62vh #fff, 38vw 92vh #fff, 58vw 78vh #fff, 66vw 12vh #fff,
+    72vw 48vh #fff, 84vw 18vh #fff, 96vw 72vh #fff;
   animation: starFall1 18s linear infinite;
 }
 
+/* STAR LAYER 2 */
 .space-bg::after{
   width: 3px;
   height: 3px;
@@ -50,8 +54,41 @@
     8vw 20vh rgba(255,255,255,0.9), 20vw 10vh rgba(255,255,255,0.9), 28vw 45vh rgba(255,255,255,0.9),
     36vw 75vh rgba(255,255,255,0.9), 44vw 30vh rgba(255,255,255,0.9), 52vw 65vh rgba(255,255,255,0.9),
     66vw 40vh rgba(255,255,255,0.9), 74vw 85vh rgba(255,255,255,0.9), 82vw 20vh rgba(255,255,255,0.9),
-    95vw 50vh rgba(255,255,255,0.9);
+    95vw 50vh rgba(255,255,255,0.9),
+    12vw 88vh rgba(255,255,255,0.9), 58vw 22vh rgba(255,255,255,0.9), 88vw 90vh rgba(255,255,255,0.9);
   animation: starFall2 28s linear infinite;
+}
+
+/* ===== NEW: ORB LAYER ===== */
+/* Add this element in your JSX: <div className="space-bg"><div className="space-orbs" /> ...shooting stars...</div> */
+.space-orbs{
+  position: absolute;
+  inset: -20vh -10vw;
+  pointer-events: none;
+  z-index: -2;
+  opacity: 0.9;
+
+  /* multiple soft light orbs */
+  background:
+    radial-gradient(220px 220px at 12% 25%, rgba(120,200,255,0.18), transparent 70%),
+    radial-gradient(320px 320px at 28% 70%, rgba(180,120,255,0.16), transparent 72%),
+    radial-gradient(260px 260px at 55% 35%, rgba(255,140,220,0.12), transparent 70%),
+    radial-gradient(360px 360px at 72% 62%, rgba(120,255,220,0.10), transparent 75%),
+    radial-gradient(240px 240px at 86% 22%, rgba(255,220,140,0.08), transparent 70%),
+    radial-gradient(420px 420px at 50% 85%, rgba(120,160,255,0.10), transparent 78%),
+    radial-gradient(260px 260px at 8% 88%, rgba(255,120,180,0.10), transparent 72%),
+    radial-gradient(300px 300px at 92% 78%, rgba(160,255,240,0.08), transparent 74%);
+
+  filter: blur(10px);
+  mix-blend-mode: screen;
+
+  animation: orbFloat 22s ease-in-out infinite;
+}
+
+@keyframes orbFloat{
+  0%   { transform: translate3d(0,0,0) scale(1); }
+  50%  { transform: translate3d(2vw,-2vh,0) scale(1.02); }
+  100% { transform: translate3d(0,0,0) scale(1); }
 }
 
 @keyframes starFall1{
@@ -94,6 +131,7 @@
 @media (prefers-reduced-motion: reduce){
   .space-bg::before,
   .space-bg::after,
+  .space-orbs,
   .shooting-star{
     animation: none !important;
   }

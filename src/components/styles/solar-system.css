@@ -14,6 +14,109 @@
   isolation:isolate;
 }
 
+/* ===== Hover Info Card + Connector Line ===== */
+
+.planet-line{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;           /* below card, above rings */
+  pointer-events: none;
+}
+
+.planet-line line{
+  stroke: rgba(140, 240, 255, 0.55);
+  stroke-width: 2;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 10px rgba(140,240,255,0.25));
+}
+
+/* Card positioned to the right like your mock */
+.planet-card{
+  position: absolute;
+  right: clamp(10px, 3vw, 28px);
+  top: 34%;
+  transform: translateY(-50%);
+
+  width: min(360px, 42vw);
+  padding: 16px 16px 14px;
+
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(10, 12, 22, 0.62);
+  backdrop-filter: blur(12px);
+
+  color: rgba(255,255,255,0.9);
+  z-index: 4;
+  pointer-events: auto;
+
+  box-shadow:
+    0 18px 50px rgba(0,0,0,0.55),
+    0 0 0 1px rgba(120,200,255,0.06),
+    0 0 28px rgba(140,240,255,0.08);
+
+  animation: planetCardIn 180ms ease-out;
+}
+
+@keyframes planetCardIn{
+  from { opacity: 0; transform: translateY(-50%) translateX(10px); }
+  to   { opacity: 1; transform: translateY(-50%) translateX(0); }
+}
+
+.planet-card__title{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+}
+
+.planet-card__dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(140,240,255,0.9);
+  box-shadow: 0 0 16px rgba(140,240,255,0.35);
+  flex: 0 0 auto;
+}
+
+.planet-card__desc{
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: rgba(255,255,255,0.70);
+}
+
+.planet-card__cta{
+  display: inline-flex;
+  margin-top: 12px;
+  font-size: 13px;
+  color: rgba(180,240,255,0.9);
+  text-decoration: none;
+}
+
+.planet-card__cta:hover{
+  text-decoration: underline;
+}
+
+/* On small screens, stack the card below (so it doesn't cover the orbit) */
+@media (max-width: 640px){
+  .planet-card{
+    top: auto;
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+    width: auto;
+    transform: none;
+  }
+  @keyframes planetCardIn{
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+}
+
+
 /* Pause ALL orbits when hovering ANY planet */
 .solar2:has(.p:hover) .p {
   animation-play-state: paused;
@@ -282,3 +385,107 @@
 @media (prefers-reduced-motion: reduce){
   .p{ animation: none !important; }
 }
+
+/* ================= INFO CARD + CONNECTOR ================= */
+
+.planet-line {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.planet-line line {
+  stroke: rgba(140, 240, 255, 0.6);
+  stroke-width: 2;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 12px rgba(140, 240, 255, 0.35));
+}
+
+/* Card */
+.planet-card {
+  position: absolute;
+  right: clamp(12px, 4vw, 32px);
+  top: 35%;
+  transform: translateY(-50%);
+
+  width: min(360px, 44vw);
+  padding: 16px;
+
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(10, 12, 22, 0.6);
+  backdrop-filter: blur(14px);
+
+  color: rgba(255, 255, 255, 0.9);
+  z-index: 4;
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.6),
+    0 0 40px rgba(140, 240, 255, 0.08);
+
+  animation: planetCardIn 180ms ease-out;
+}
+
+@keyframes planetCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+.planet-card__title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.planet-card__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(140, 240, 255, 0.9);
+  box-shadow: 0 0 14px rgba(140, 240, 255, 0.45);
+}
+
+.planet-card__desc {
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.planet-card__hint {
+  margin-top: 10px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Mobile layout */
+@media (max-width: 640px) {
+  .planet-card {
+    left: 10px;
+    right: 10px;
+    bottom: 12px;
+    top: auto;
+    transform: none;
+    width: auto;
+  }
+
+  @keyframes planetCardIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
